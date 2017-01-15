@@ -15,6 +15,9 @@
 *
 */
 
+#include <GLES2/gl2.h>
+#include <EGL/egl.h>
+
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "AndroidProject1.NativeActivity", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "AndroidProject1.NativeActivity", __VA_ARGS__))
 
@@ -108,7 +111,7 @@ static int engine_init_display(struct engine* engine) {
 	// Initialize GL state.
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
 	glEnable(GL_CULL_FACE);
-	glShadeModel(GL_SMOOTH);
+//	glShadeModel(GL_SMOOTH);
 	glDisable(GL_DEPTH_TEST);
 
 	return 0;
@@ -124,8 +127,7 @@ static void engine_draw_frame(struct engine* engine) {
 	}
 
 	// Just fill the screen with a color.
-	glClearColor(((float)engine->state.x) / engine->width, engine->state.angle,
-		((float)engine->state.y) / engine->height, 1);
+	glClearColor(0, 255, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	eglSwapBuffers(engine->display, engine->surface);
@@ -238,6 +240,8 @@ void android_main(struct android_app* state) {
 	}
 
 	engine.animating = 1;
+
+	GLuint program = glCreateProgram();
 
 	// loop waiting for stuff to do.
 
