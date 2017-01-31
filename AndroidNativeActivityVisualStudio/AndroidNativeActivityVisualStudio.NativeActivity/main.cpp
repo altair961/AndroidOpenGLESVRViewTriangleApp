@@ -438,10 +438,14 @@ bool RenderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//	the intensity of the particular channel, with all 0.0 being transparent black, and all 1.0 being opaque white. Subsequent calls to
 	//	glClear with the color bit will clear the frame buffer to this value.
 	//	The functions glClearDepth and glClearStencil allow an application to do the same with depth and stencil values respectively.
+	int w;
+	int h;
+	eglQuerySurface(eglDisplay, eglSurface, EGL_WIDTH, &w);
+	eglQuerySurface(eglDisplay, eglSurface, EGL_HEIGHT, &h);
 
 
 	// Set the viewport   
-	glViewport(0, 0, 110, 320);
+	glViewport(0, 0, w, h);
 
 	glClearColor(0.6f, 0.8f, 1.0f, 1.0f);
 
