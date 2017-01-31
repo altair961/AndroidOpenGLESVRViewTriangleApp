@@ -238,7 +238,7 @@ bool InitializeBuffer(GLuint& vertexBuffer)
 
 	// Vertex data containing the positions of each point of the triangle
 	GLfloat vertexData[] = {
-		-0.4f, -0.4f, 0.0f, // Bottom Left
+		0.0f, -0.4f, 0.0f, // Bottom Left
 		0.4f, -0.4f, 0.0f, // Bottom Right
 		0.0f, 0.4f, 0.0f
 	}; // Top Middle
@@ -439,6 +439,10 @@ bool RenderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//	glClear with the color bit will clear the frame buffer to this value.
 	//	The functions glClearDepth and glClearStencil allow an application to do the same with depth and stencil values respectively.
 
+
+	// Set the viewport   
+	glViewport(0, 0, 110, 320);
+
 	glClearColor(0.6f, 0.8f, 1.0f, 1.0f);
 
 	//	Clears the color buffer.
@@ -458,6 +462,7 @@ bool RenderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 		0.0f, 0.0f, 1.0f, 0.0f,
 		0.0f, 0.0f, 0.0f, 1.0f
 	};
+
 
 	// Pass the transformationMatrix to the shader using its location
 	glUniformMatrix4fv(matrixLocation, 1, GL_FALSE, transformationMatrix);
@@ -488,6 +493,26 @@ bool RenderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//	that OpenGL ES 2.0 has finished rendering a scene, and that the display should now draw to the screen from the new data. At the same
 	//	time, the front buffer is made available for OpenGL ES 2.0 to start rendering to. In effect, this call swaps the front and back
 	//	buffers.
+
+		glViewport(10, 20, 30, 30);
+	//	glScissor(10, 20, 30, 30);
+	//	glClearColor(0.8f, 0.3f, 1.0f, 1.0f);
+	//	glClear(GL_COLOR_BUFFER_BIT);
+		int matrixLocation1 = glGetUniformLocation(shaderProgram, "transformationMatrix");
+		const float transformationMatrix1[] =
+		{
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			0.0f, 0.0f, 0.0f, 1.0f
+		};
+		glUniformMatrix4fv(matrixLocation1, 1, GL_FALSE, transformationMatrix1);
+	//	if (!TestGLError("glUniformMatrix4fv")) { return false; }
+		glEnableVertexAttribArray(VertexArray);
+	//	glVertexAttribPointer(VertexArray, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	//	if (!TestGLError("glVertexAttribPointer")) { return false; }
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+	//	if (!TestGLError("glDrawArrays")) { return false; }
 
 	if (!eglSwapBuffers(eglDisplay, eglSurface))
 	{
