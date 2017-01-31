@@ -238,7 +238,7 @@ bool InitializeBuffer(GLuint& vertexBuffer)
 
 	// Vertex data containing the positions of each point of the triangle
 	GLfloat vertexData[] = {
-		0.0f, -0.4f, 0.0f, // Bottom Left
+		-0.4f, -0.4f, 0.0f, // Bottom Left
 		0.4f, -0.4f, 0.0f, // Bottom Right
 		0.0f, 0.4f, 0.0f
 	}; // Top Middle
@@ -445,7 +445,7 @@ bool RenderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 
 
 	// Set the viewport   
-	glViewport(0, 0, w, h);
+	glViewport(0, 0, w/2, h);
 
 	glClearColor(0.6f, 0.8f, 1.0f, 1.0f);
 
@@ -498,7 +498,7 @@ bool RenderScene(GLuint shaderProgram, EGLDisplay eglDisplay, EGLSurface eglSurf
 	//	time, the front buffer is made available for OpenGL ES 2.0 to start rendering to. In effect, this call swaps the front and back
 	//	buffers.
 
-		glViewport(10, 20, 30, 30);
+		glViewport(w/2, 0, w/2, h);
 	//	glScissor(10, 20, 30, 30);
 	//	glClearColor(0.8f, 0.3f, 1.0f, 1.0f);
 	//	glClear(GL_COLOR_BUFFER_BIT);
@@ -680,7 +680,7 @@ void android_main(struct android_app* application)
 	int eventIdentifier;
 	int events;
 	struct android_poll_source* pollSource;
-
+	
 	// Renders a triangle whilst the android application is active
 	while (true)
 	{
