@@ -6,7 +6,7 @@
 #include <android/window.h>
 
 #include <vector>
-#include <glm>
+
 
 // Name of the application
 const char* const ApplicationName = "HelloAPI";
