@@ -6,7 +6,7 @@ For now it just shows "hello triangle" example on two viewports as on the image 
 The goal is to draw a 3d model loaded from .obj
 
 <p align="center">
-  <img src="HelloTriangleVR" width="350"/>
+  <img src="HelloTriangleVR.png" width="350"/>
 </p>
 
 In order to run this sample "native-activity" template with Android NDK installed on Visual Studio are required.
