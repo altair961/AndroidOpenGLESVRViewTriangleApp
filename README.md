@@ -1,4 +1,4 @@
-# VirtualRealityViewer
+# AndroidOpenGLESVRViewTriangleApp
 
 Android application created in Visual Studio using "native-activity" template.
 The language of this project is C++ with OpenGL ES API
