@@ -2,8 +2,7 @@
 
 Android application created in Visual Studio using "native-activity" template.
 The language of this project is C++ with OpenGL ES API
-For now it just shows "hello triangle" example on two viewports as on the image attached. 
-The goal is to draw a 3d model loaded from .obj
+For now it just shows "hello triangle" example on two viewports as on the image attached.
 
 <p align="center">
   <img src="HelloTriangleVR.png" width="350"/>
